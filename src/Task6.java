@@ -1,4 +1,4 @@
-public class task6 {
+public class Task6 {
     public static void main(String[] args) {
 
         // 1
@@ -23,9 +23,12 @@ public class task6 {
 
         // 2
         int[] arr2 = {2, 4, 6, 8, 10};
-        int[] arr3 = new int[arr2.length + 1];
+        int[] arr3 = new int[arr2.length];  // ← исправлено: убрано дублирование
 
-        System.arraycopy(arr2, 0, arr3, 0, arr2.length);
+        for (int i = 0; i < arr2.length; i++) {
+            arr3[i] = arr2[i];
+        }
+
         arr3[arr3.length - 1] = 0;
 
         System.out.println("Задание 2. Второй массив:");
