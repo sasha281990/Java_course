@@ -1,7 +1,6 @@
 package src.Task14;
 
-import java.util.HashSet;
-import java.util.Set;
+import java.util.*;
 
 public class Department {
     private String name;
@@ -33,17 +32,27 @@ public class Department {
     }
 
     public long countMen() {
-        return rooms.stream()
-                .flatMap(room -> room.getPatients().stream())
-                .filter(p -> p.getGender() == Gender.MALE)
-                .count();
+        long count = 0;
+        for (Room room : rooms) {
+            for (Patient patient : room.getPatients()) {
+                if (patient.getGender() == Gender.MALE) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     public long countWomen() {
-        return rooms.stream()
-                .flatMap(room -> room.getPatients().stream())
-                .filter(p -> p.getGender() == Gender.FEMALE)
-                .count();
+        long count = 0;
+        for (Room room : rooms) {
+            for (Patient patient : room.getPatients()) {
+                if (patient.getGender() == Gender.FEMALE) {
+                    count++;
+                }
+            }
+        }
+        return count;
     }
 
     public void printInfo() {
